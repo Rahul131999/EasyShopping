@@ -2,7 +2,7 @@
  * @Author: root
  * @Date:   2022-09-07T20:11:12+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-07T20:39:10+05:30
+ * @Last modified time: 2022-09-07T21:01:31+05:30
  */
 import {React, useState} from 'react';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
@@ -28,7 +28,7 @@ function Login(){
               <Form.Control type="email" placeholder="Enter Email" value={mail} required onChange={(e)=> setMail(e.target.value)} />
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Enter Password" value={pass} required onChange={(p)=> setPass(p.target.value)} />
             </Form.Group>
@@ -36,11 +36,12 @@ function Login(){
             <Form.Group>
               <Button type="submit">Login</Button>
             </Form.Group>
-            <p>
+            <p className="pt-3 text-center">
               Don't have an account?<Link to="/signup"> Create Account</Link>{" "}
             </p>
           </Form>
         </Col>
+        <Col md={6} className="login__image--container"></Col>
       </Row>
     </Container>
   );

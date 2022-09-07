@@ -1,0 +1,33 @@
+/**
+ * @Author: root
+ * @Date:   2022-09-07T20:55:19+05:30
+ * @Last modified by:   root
+ * @Last modified time: 2022-09-07T21:17:54+05:30
+ */
+ .signup__image--container {
+     background-image: url(https://firebasestorage.googleapis.com/v0/b/shopping-2bc98.appspot.com/o/pexels-tembela-bohle-1884584.jpg?alt=media&token=7c50a38b-0fd3-4dac-890b-c1a831d46358);
+     height: 100vh;
+     background-size: cover;
+ }
+
+ .signup__form--container,
+ .login__form--container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     height: 100vh;
+     justify-content: center;
+ }
+
+ .login__image--container {
+     background-image: url(https://firebasestorage.googleapis.com/v0/b/shopping-2bc98.appspot.com/o/pexels-lumn-322207.jpg?alt=media&token=06d31379-c22e-4c48-bd98-a9cc31692a28);
+     height: 100vh;
+     background-size: cover;
+ }
+
+ @media screen and (max-width: 756px) {
+     .login__image--container,
+     .signup__image--container {
+         display: none;
+     }
+ }
