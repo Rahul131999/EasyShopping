@@ -2,11 +2,12 @@
  * @Author: root
  * @Date:   2022-09-07T17:47:47+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-07T18:02:43+05:30
+ * @Last modified time: 2022-09-08T00:32:16+05:30
  */
 const exp = require('express');
 const app = exp();
 const cors = require('cors');
+require('./connect')
 const http = require('http');
 const server = http.createServer(app);
 const {Server} = require('socket.io');
