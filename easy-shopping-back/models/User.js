@@ -2,7 +2,7 @@
  * @Author: root
  * @Date:   2022-09-08T00:39:03+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-08T00:53:43+05:30
+ * @Last modified time: 2022-09-08T01:03:11+05:30
  */
  const mongo = require('mongoose');
  const bcrypt = require('bcrypt');
@@ -53,6 +53,48 @@
    orders: [{type: mongo.Schema.Types.ObjectId, ref: 'Order'}]
 
  }, {minimize: false});
+
+ UserSchema.statics.findByCredentials = async function(email, password) {
+  const user = await User.findOne({email});
+  if(!user) throw new Error('invalid credentials');
+  const isSamePassword = bcrypt.compareSync(password, user.password);
+  if(isSamePassword) return user;
+  throw new Error('invalid credentials');
+}
+
+
+UserSchema.methods.toJSON = function(){
+  const user = this;
+  const userObject = user.toObject();
+  delete userObject.password;
+  return userObject;
+}
+
+
+
+UserSchema.pre('save', function (next) {
+
+  const user = this;
+
+  if(!user.isModified('password')) return next();
+
+  bcrypt.genSalt(10, function(err, salt){
+    if(err) return next(err);
+
+    bcrypt.hash(user.password, salt, function(err, hash){
+      if(err) return next(err);
+
+      user.password = hash;
+      next();
+    })
+
+  })
+
+})
+
+UserSchema.pre('remove', function(next){
+  this.model('Order').remove({owner: this._id}, next);
+})
 
 
 const User = mongo.model('User', UserSchema);
