@@ -2,17 +2,28 @@
  * @Author: root
  * @Date:   2022-09-07T19:04:14+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-07T23:31:49+05:30
+ * @Last modified time: 2022-09-09T16:51:32+05:30
  */
 import React from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+
+
+import { Navbar, Button, Nav, NavDropdown, Container } from "react-bootstrap";
+
+import { useDispatch, useSelector } from "react-redux";
 import {LinkContainer} from "react-router-bootstrap";
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
+import { logout } from '../Functionality/userCut';
 import './Navig.css';
 
 function Navig(){
+
+  const user = useSelector((state) => state.user);
+  const dismiss = useDispatch();
+
+  function handleLogout(){
+    dismiss(logout());
+  }
+
   return(
 
     <Navbar bg="light" expand="lg">
@@ -24,18 +35,43 @@ function Navig(){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="/login">Login</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+
+            { !user && (
+              <LinkContainer to="/login">
+                <Nav.Link>Login</Nav.Link>
+              </LinkContainer>
+            )}
+
+            { user && (
+              <NavDropdown title = {`${user.name}`} id="basic-nav-dropdown">
+                {user.isAdmin && (
+                  <>
+                    <LinkContainer to="/dash">
+                      <NavDropdown.Item> Dashboard </NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to="/new">
+                      <NavDropdown.Item> Advertise Product </NavDropdown.Item>
+                    </LinkContainer>
+                  </>
+                )}
+
+                {user.isAdmin && (
+                  <>
+                    <LinkContainer to="/cart">
+                      <NavDropdown.Item> Cart </NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to="/orders">
+                      <NavDropdown.Item> My Orders </NavDropdown.Item>
+                    </LinkContainer>
+                  </>
+                )}
+
+                <NavDropdown.Divider />
+                  <Button variant="danger" className="logout-btn" onClick={()=> handleLogout}> Logout </Button>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

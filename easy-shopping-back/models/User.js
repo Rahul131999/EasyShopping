@@ -2,12 +2,12 @@
  * @Author: root
  * @Date:   2022-09-08T00:39:03+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-08T01:03:11+05:30
+ * @Last modified time: 2022-09-08T01:11:05+05:30
  */
  const mongo = require('mongoose');
  const bcrypt = require('bcrypt');
 
- const UserSchema = mongoose.Schema({
+ const UserSchema = mongo.Schema({
 
    name: {
      type: String,
