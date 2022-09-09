@@ -2,7 +2,7 @@
  * @Author: root
  * @Date:   2022-09-07T17:37:59+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-09T16:59:42+05:30
+ * @Last modified time: 2022-09-09T17:52:22+05:30
  */
 
 
@@ -31,6 +31,7 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
           </>
         )}
+
         <Route path="*" element={ <Home />} />
       </Routes>
       </BrowserRouter>

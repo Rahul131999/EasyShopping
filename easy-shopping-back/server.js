@@ -2,7 +2,7 @@
  * @Author: root
  * @Date:   2022-09-07T17:47:47+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-08T23:02:29+05:30
+ * @Last modified time: 2022-09-09T17:17:48+05:30
  */
 const exp = require('express');
 const app = exp();
@@ -18,11 +18,14 @@ const io = new Server(server, {
 
 const User = require('./models/User');
 const UserRoutes = require('./routes/UserRoutes');
+const Product = require('./models/Product');
+const ProductRoutes = require('./routes/ProductRoutes');
 
 app.use(cors());
 app.use(exp.urlencoded({extended: true}));
 app.use(exp.json());
 app.use('/users', UserRoutes);
+app.use('/products', ProductRoutes);
 
 
 server.listen(8080, () => {
