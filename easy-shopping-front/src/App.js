@@ -2,7 +2,7 @@
  * @Author: root
  * @Date:   2022-09-07T17:37:59+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-09T17:52:22+05:30
+ * @Last modified time: 2022-09-09T23:18:39+05:30
  */
 
 
@@ -16,6 +16,7 @@ import Home from "./Activities/Home";
 import Login from "./Activities/Login";
 import Signup from "./Activities/Signup";
 import { useSelector } from "react-redux";
+import PostProduct from "./Activities/PostProduct";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -31,6 +32,7 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
           </>
         )}
+        <Route path="/new" element={<PostProduct />} />
 
         <Route path="*" element={ <Home />} />
       </Routes>
