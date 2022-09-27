@@ -1,0 +1,16 @@
+/**
+ * @Author: root
+ * @Date:   2022-09-11T23:24:55+05:30
+ * @Last modified by:   root
+ * @Last modified time: 2022-09-11T23:25:32+05:30
+ */
+ .product__carousel--image {
+     max-width: 100%;
+     object-fit: cover;
+     max-height: 500px;
+ }
+
+ .alice-carousel__prev-btn,
+ .alice-carousel__next-btn {
+     display: none !important;
+ }

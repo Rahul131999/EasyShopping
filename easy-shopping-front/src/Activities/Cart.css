@@ -1,0 +1,24 @@
+/**
+ * @Author: root
+ * @Date:   2022-09-27T04:41:27+05:30
+ * @Last modified by:   root
+ * @Last modified time: 2022-09-27T05:22:23+05:30
+ */
+ .fa-plus-circle,
+ .fa-minus-circle {
+     cursor: pointer;
+     display: inline-block;
+ }
+
+ .fa-plus-circle {
+     margin-left: 5px;
+ }
+
+ .fa-minus-circle {
+     margin-right: 5px;
+ }
+
+ .table-responsive-sm {
+     max-height: 70vh;
+     overflow: scroll;
+ }

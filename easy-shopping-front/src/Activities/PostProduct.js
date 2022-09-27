@@ -2,11 +2,11 @@
  * @Author: root
  * @Date:   2022-09-09T16:35:42+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-10T00:43:53+05:30
+ * @Last modified time: 2022-09-27T05:07:16+05:30
  */
 import React, {useState} from 'react';
 import './PostProduct.css';
-import { usePostProductMutation } from '../Services/mainApi';
+import { useCreateProductMutation } from '../Services/mainApi';
 import { Alert, Col, Container, Form, Row, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "../axios";
@@ -20,7 +20,7 @@ function PostProduct(){
     const [images, setImages] = useState([]);
     const [imgToRemove, setImgToRemove] = useState(null);
     const navigate = useNavigate();
-    const [postProduct, { isError, error, isLoading, isSuccess }] = usePostProductMutation();
+    const [postProduct, { isError, error, isLoading, isSuccess }] = useCreateProductMutation();
 
     function handleSubmit(a){
       a.preventDefault();

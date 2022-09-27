@@ -2,7 +2,7 @@
  * @Author: root
  * @Date:   2022-09-08T17:57:08+05:30
  * @Last modified by:   root
- * @Last modified time: 2022-09-09T16:30:35+05:30
+ * @Last modified time: 2022-09-27T05:24:54+05:30
  */
  import {createSlice} from '@reduxjs/toolkit';
 
@@ -19,6 +19,10 @@
    extraReducers: (builder) => {
        builder.addMatcher(mainApi.endpoints.signup.matchFulfilled, (_, { payload }) => payload);
        builder.addMatcher(mainApi.endpoints.login.matchFulfilled, (_, { payload }) => payload);
+       builder.addMatcher(mainApi.endpoints.addToCart.matchFulfilled, (_, { payload }) => payload);
+        builder.addMatcher(mainApi.endpoints.removeFromCart.matchFulfilled, (_, { payload }) => payload);
+        builder.addMatcher(mainApi.endpoints.increaseCartProduct.matchFulfilled, (_, { payload }) => payload);
+        builder.addMatcher(mainApi.endpoints.decreaseCartProduct.matchFulfilled, (_, { payload }) => payload);
    },
  });
 
